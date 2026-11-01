@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Varun Sahu - Professional Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #3730a3;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --accent-bg: #f8fafc;
+      --border-color: #e2e8f0;
+      --tag-bg: #eef2ff;
+      --tag-text: #4338ca;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+      background: #090d1a;
+      color: var(--text-main);
+      padding: 40px 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Top Action Bar */
+    .top-toolbar {
+      width: 100%;
+      max-width: 860px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding: 14px 20px;
+      background: rgba(19, 26, 48, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(167, 139, 250, 0.25);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .toolbar-title {
+      color: #f1f5f9;
+      font-size: 15px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s ease;
+    }
+    .btn-download {
+      background: linear-gradient(135deg, #7c3aed, #4f46e5);
+      color: white;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+    }
+    .btn-download:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.6);
+    }
+    .btn-back {
+      background: rgba(255, 255, 255, 0.08);
+      color: #e2e8f0;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .btn-back:hover {
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff;
+    }
+
+    /* The Resume Sheet (Standard A4 Ratio) */
+    .resume-sheet {
+      width: 100%;
+      max-width: 860px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      padding: 50px 55px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* Header */
+    .resume-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 22px;
+      gap: 20px;
+    }
+    .candidate-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+    }
+    .candidate-title {
+      font-size: 16px;
+      color: var(--primary);
+      font-weight: 700;
+      margin-top: 6px;
+      letter-spacing: 0.5px;
+    }
+    .contact-info {
+      text-align: right;
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .contact-info a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Sections */
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 6px;
+    }
+
+    .summary-text {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Education Item */
+    .edu-item {
+      margin-bottom: 16px;
+    }
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 3px;
+    }
+    .edu-institution {
+      font-size: 14px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .edu-badge {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 12px;
+    }
+    .edu-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      line-height: 1.6;
+    }
+
+    /* Skills Grid */
+    .skills-section-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .skill-category {
+      background: var(--accent-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 14px 18px;
+    }
+    .skill-cat-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+    .skill-cat-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+    .skill-pill {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    /* Extracurricular */
+    .activity-item {
+      margin-bottom: 14px;
+    }
+    .activity-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .activity-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-top: 2px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .resume-sheet { padding: 30px 24px; }
+      .resume-header { flex-direction: column; }
+      .contact-info { text-align: left; }
+      .skills-section-grid { grid-template-columns: 1fr; }
+      .top-toolbar { flex-direction: column; gap: 12px; align-items: stretch; }
+      .toolbar-actions { justify-content: space-between; }
+    }
+
+    /* Pure Clean Print Output */
+    @media print {
+      body {
+        background: transparent !important;
+        padding: 0 !important;
+      }
+      .top-toolbar { display: none !important; }
+      .resume-sheet {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Controls Bar -->
+  <div class="top-toolbar">
+    <div class="toolbar-title">
+      <span>📄 Varun Sahu — Official Resume</span>
+    </div>
+    <div class="toolbar-actions">
+      <a href="index.html" class="btn btn-back">← Back to Portfolio</a>
+      <button class="btn btn-download" onclick="window.print()">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        <span>Download PDF / Print</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Real Resume Sheet -->
+  <div class="resume-sheet" id="resume">
+    <!-- Header -->
+    <header class="resume-header">
+      <div>
+        <h1 class="candidate-name">VARUN SAHU</h1>
+        <div class="candidate-title">ASPIRING SOFTWARE DEVELOPER · BCA</div>
+      </div>
+      <div class="contact-info">
+        <div>📍 Bilaspur, Chhattisgarh, India</div>
+        <div>✉️ <a href="mailto:varunsahu1707@gmail.com">varunsahu1707@gmail.com</a></div>
+        <div>📷 Instagram: <a href="https://instagram.com/v_aruuu9z" target="_blank">@v_aruuu9z</a></div>
+        <div>🌐 Portfolio: Varun Sahu Portfolio</div>
+      </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section>
+      <div class="section-title">Career Objective & Summary</div>
+      <p class="summary-text">
+        Proactive, inquisitive and tech-driven computer application student currently pursuing a Bachelor of Computer Applications (BCA) at CCSE, Bilaspur. Passionate about software architecture, clean programming principles, problem-solving and modern web technologies. Aspiring to contribute technical skills to real-world development teams while continuously learning and delivering value.
+      </p>
+    </section>
+
+    <!-- Education -->
+    <section>
+      <div class="section-title">Education & Academic Background</div>
+
+      <div class="edu-item">
+        <div class="edu-header">
+          <span>Bachelor of Computer Applications (BCA)</span>
+          <span class="edu-badge">Currently Pursuing</span>
+        </div>
+        <div class="edu-institution">CCSE, Bilaspur, Chhattisgarh</div>
+        <p class="edu-desc">Relevant Coursework: Computer Fundamentals, Programming Logic & Problem Solving, Data Structures, Database Management Systems (DBMS), and Web Technologies.</p>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-header">
+          <span>Higher Secondary Education (Class 12)</span>
+          <span class="edu-badge">Completed</span>
+        </div>
+        <div class="edu-institution">OPJS, Savitri Nagar, Tamnar, Chhattisgarh</div>
+        <p class="edu-desc">Comprehensive senior secondary education focusing on analytical thinking, mathematics, and science.</p>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-header">
+          <span>Secondary School Examination (Class 10)</span>
+          <span class="edu-badge">Completed</span>
+        </div>
+        <div class="edu-institution">Woods Valley School, Kasdol, Tamnar, Chhattisgarh</div>
+        <p class="edu-desc">Foundational academic excellence with consistent co-curricular engagement.</p>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section>
+      <div class="section-title">Skills & Competencies</div>
+      <div class="skills-section-grid">
+        <div class="skill-category">
+          <div class="skill-cat-title">Technical Foundations</div>
+          <div class="skill-cat-items">
+            <span class="skill-pill">Computer Fundamentals</span>
+            <span class="skill-pill">Programming Logic</span>
+            <span class="skill-pill">HTML5 & CSS3</span>
+            <span class="skill-pill">JavaScript Basics</span>
+            <span class="skill-pill">Data Structures</span>
+            <span class="skill-pill">Software Design Concepts</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-cat-title">Professional & Interpersonal Strengths</div>
+          <div class="skill-cat-items">
+            <span class="skill-pill">Effective Communication</span>
+            <span class="skill-pill">Team Collaboration</span>
+            <span class="skill-pill">Creative Problem Solving</span>
+            <span class="skill-pill">Continuous Learning</span>
+            <span class="skill-pill">Adaptability</span>
+            <span class="skill-pill">Analytical Thinking</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects & Goals -->
+    <section>
+      <div class="section-title">Projects & Technical Initiatives</div>
+      <div class="activity-item">
+        <div class="activity-title">Personal Portfolio Website</div>
+        <p class="activity-desc">Designed and deployed an interactive modern personal portfolio featuring responsive glassmorphism UI, ambient motion graphic canvas, interactive 3D elements, and structured resume accessibility.</p>
+      </div>
+    </section>
+
+    <!-- Extracurricular -->
+    <section>
+      <div class="section-title">Extracurricular Activities & Interests</div>
+      <div class="activity-item">
+        <div class="activity-title">⚽ Football (Team Sport & Athletics)</div>
+        <p class="activity-desc">Active football player — builds leadership, resilience, instant tactical decision-making, and high-level team collaboration under competitive environments.</p>
+      </div>
+      <div class="activity-item">
+        <div class="activity-title">📸 Photography & Creative Arts</div>
+        <p class="activity-desc">Passionate photographer — focuses on composition, perspective, lighting detail, and aesthetic storytelling.</p>
+      </div>
+      <div class="activity-item">
+        <div class="activity-title">✈️ Travelling & Cultural Exploration</div>
+        <p class="activity-desc">Keen traveller experiencing new places and diverse environments, strengthening cultural adaptability and open-minded perspectives.</p>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>
+
