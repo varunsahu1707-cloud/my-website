@@ -983,24 +983,24 @@
 
       /* Animated Dropdown Menu for Mobile/Tablet */
       nav .links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
+        position: fixed !important;
+        top: 54px !important;
+        left: 0 !important;
+        width: 100vw !important;
         background: #0d1224 !important;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        padding: 0;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0 !important;
+        padding: 0 !important;
         display: none !important;
-        border-bottom: 2px solid rgba(167, 139, 250, 0.4);
-        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.95);
-        z-index: 99999;
+        border-bottom: 2px solid #a78bfa !important;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.98) !important;
+        z-index: 999999 !important;
       }
 
       nav .links.active {
         display: flex !important;
-        padding: 10px 0 16px;
+        padding: 12px 0 18px !important;
         animation: menuFadeIn 0.25s ease-out forwards;
       }
 
@@ -1010,18 +1010,21 @@
       }
 
       nav a {
-        display: block;
-        padding: 14px 28px;
-        font-size: 16px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        transition: all 0.2s ease;
+        display: block !important;
+        padding: 15px 30px !important;
+        font-size: 16px !important;
+        color: #f1f5f9 !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        text-align: left !important;
+        text-decoration: none !important;
+        transition: all 0.2s ease !important;
       }
       nav a:active {
         background: rgba(167, 139, 250, 0.25) !important;
-        transform: scale(0.98);
+        color: #38bdf8 !important;
       }
       nav a:last-child {
-        border-bottom: none;
+        border-bottom: none !important;
       }
       nav a::after {
         display: none;
@@ -1525,24 +1528,19 @@
     function toggleMobileMenu(e) {
       if (e) {
         if (e.stopPropagation) e.stopPropagation();
-        if (e.preventDefault) e.preventDefault();
       }
       const toggle = document.getElementById('menuToggle');
       const menu = document.getElementById('navLinks');
       if (toggle && menu) {
-        const isOpening = !menu.classList.contains('active');
-        if (isOpening) {
-          toggle.classList.add('active');
-          menu.classList.add('active');
-        } else {
-          toggle.classList.remove('active');
-          menu.classList.remove('active');
-        }
+        toggle.classList.toggle('active');
+        menu.classList.toggle('active');
       }
     }
 
     // Touch & Click Ripple Motion Graphic for Mobile & Desktop
     window.addEventListener('pointerdown', (e) => {
+      // Don't trigger ripple if tapping the menu toggle to avoid event interference
+      if (e.target.closest('#menuToggle')) return;
       const circle = document.createElement('div');
       circle.className = 'ripple-circle';
       circle.style.left = e.clientX + 'px';
@@ -1557,6 +1555,11 @@
     document.addEventListener('DOMContentLoaded', () => {
       const navLinks = document.getElementById('navLinks');
       const menuToggle = document.getElementById('menuToggle');
+
+      if (menuToggle) {
+        menuToggle.addEventListener('click', toggleMobileMenu);
+      }
+
       if (navLinks) {
         navLinks.querySelectorAll('a').forEach(a => {
           a.addEventListener('click', () => {
@@ -1567,7 +1570,7 @@
       }
 
       document.addEventListener('click', (e) => {
-        if (menuToggle && navLinks) {
+        if (menuToggle && navLinks && menuToggle.classList.contains('active')) {
           if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
             menuToggle.classList.remove('active');
             navLinks.classList.remove('active');
