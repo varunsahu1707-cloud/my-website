@@ -1165,12 +1165,8 @@
         <div class="resume-actions">
           <a href="resume.html" target="_blank" class="resume-btn resume-btn-primary">
             <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
-            <span>Open Full Resume</span>
+            <span>Open & Download Resume</span>
           </a>
-          <button class="resume-btn resume-btn-outline" onclick="downloadResume()">
-            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-            <span>Download PDF</span>
-          </button>
         </div>
       </div>
 
@@ -1597,99 +1593,6 @@
       heroCard.parentElement.addEventListener('mouseleave', () => {
         heroCard.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
       });
-    }
-
-    /* 5. Resume Download Generator */
-    function downloadResume() {
-      const resumeWindow = window.open('', '_blank');
-      const resumeContent = `
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <title>Varun Sahu - Resume</title>
-          <style>
-            body { font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #1e293b; padding: 40px; max-width: 800px; margin: 0 auto; }
-            h1 { font-size: 28px; margin: 0 0 4px 0; color: #0f172a; }
-            .subtitle { font-size: 16px; color: #4f46e5; font-weight: 600; margin-bottom: 8px; }
-            .contact-line { font-size: 13.5px; color: #64748b; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 2px solid #e2e8f0; }
-            h2 { font-size: 18px; color: #1e1b4b; border-bottom: 1.5px solid #cbd5e1; padding-bottom: 4px; margin-top: 24px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
-            .item { margin-bottom: 14px; }
-            .item-header { display: flex; justify-content: space-between; font-weight: bold; color: #0f172a; }
-            .item-sub { color: #4f46e5; font-size: 14px; margin-bottom: 4px; }
-            .desc { color: #475569; font-size: 14px; }
-            .skills-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
-            .skill-pill { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: 500; }
-          </style>
-        </head>
-        <body>
-          <h1>Varun Sahu</h1>
-          <div class="subtitle">Aspiring Software Developer · BCA Student</div>
-          <div class="contact-line">
-            📍 Bilaspur, Chhattisgarh, India | ✉️ varunsahu1707@gmail.com | 📷 Instagram: @v_aruuu9z
-          </div>
-
-          <h2>Career Objective</h2>
-          <div class="desc">
-            Passionate and inquisitive aspiring Software Developer pursuing a Bachelor of Computer Applications (BCA). Focused on building robust software solutions, mastering modern web and programming technologies, and creating meaningful digital products.
-          </div>
-
-          <h2>Education</h2>
-          <div class="item">
-            <div class="item-header">
-              <span>Bachelor of Computer Applications (BCA)</span>
-              <span>Currently Pursuing</span>
-            </div>
-            <div class="item-sub">CCSE, Bilaspur, Chhattisgarh</div>
-            <div class="desc">Core focus: Software Engineering, Data Structures, Database Management, and Programming Languages.</div>
-          </div>
-          <div class="item">
-            <div class="item-header">
-              <span>Higher Secondary (Class 12)</span>
-              <span>Completed</span>
-            </div>
-            <div class="item-sub">OPJS, Savitri Nagar, Tamnar</div>
-            <div class="desc">Higher Secondary education with strong analytical and science foundations.</div>
-          </div>
-          <div class="item">
-            <div class="item-header">
-              <span>Secondary School (Class 10)</span>
-              <span>Completed</span>
-            </div>
-            <div class="item-sub">Woods Valley School, Kasdol, Tamnar</div>
-          </div>
-
-          <h2>Key Skills & Competencies</h2>
-          <div class="skills-list">
-            <span class="skill-pill">Computer Fundamentals</span>
-            <span class="skill-pill">Software Logic Building</span>
-            <span class="skill-pill">Web Technologies</span>
-            <span class="skill-pill">Creative Problem Solving</span>
-            <span class="skill-pill">Effective Communication</span>
-            <span class="skill-pill">Team Collaboration & Leadership</span>
-            <span class="skill-pill">Continuous Learning</span>
-          </div>
-
-          <h2>Extracurricular & Interests</h2>
-          <div class="item">
-            <div class="item-header"><span>Football (Sports & Athletics)</span></div>
-            <div class="desc">Active sports enthusiast — developing agile decision making, endurance, resilience, and teamwork.</div>
-          </div>
-          <div class="item">
-            <div class="item-header"><span>Photography & Travelling</span></div>
-            <div class="desc">Creative framing, composition, perspective capture, adaptability, and open-minded cultural exploration.</div>
-          </div>
-
-          <script>
-            window.onload = function() {
-              window.print();
-            };
-          <\/script>
-        </body>
-        </html>
-      `;
-      resumeWindow.document.open();
-      resumeWindow.document.write(resumeContent);
-      resumeWindow.document.close();
     }
   </script>
 </body>
